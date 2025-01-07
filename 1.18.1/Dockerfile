@@ -5,7 +5,7 @@ ENV NODE_DOWNLOAD_URL="https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VER
 
 RUN set -xe \
   && apt-get update \
-  && apt-get install -y curl xz-utils imagemagick make cmake g++ \
+  && apt-get install -y curl xz-utils make cmake g++ \
   && curl -fSL -o node-dist.tar.xz $NODE_DOWNLOAD_URL \
 	&& tar -xJf node-dist.tar.xz -C /usr/local --strip-components=1 \
 	&& rm node-dist.tar.xz \
