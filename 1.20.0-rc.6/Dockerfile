@@ -11,8 +11,10 @@ RUN <<EOF
   # Ref: https://github.com/docker/for-mac/issues/7255#issuecomment-2540082464
   apt-get install -y --no-install-recommends ca-certificates
 
-  # Install git so CI can clone the repository
-  apt-get install -y --no-install-recommends git
+  # Install git + openssh-client so CI can clone over SSH. Without
+  # openssh-client, CircleCI's checkout step detects "ssh missing" and
+  # falls back to its slow native git client (~12 min for a large repo).
+  apt-get install -y --no-install-recommends git openssh-client
 
   # Install curl and xz-utils to download and unpack the NodeJS binaries
   apt-get install -y --no-install-recommends curl xz-utils
