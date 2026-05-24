@@ -18,12 +18,12 @@ Included:
 2. Open a PR — the `Build and publish` workflow builds the image to verify the Dockerfile compiles.
 3. On merge to `master`, the workflow pushes the image to Docker Hub as `defactosoftware/elixir:<version>`.
 
-### Required Docker Hub secrets
+### Required Docker Hub credentials
 
-The publish workflow needs two repository secrets configured in **Settings → Secrets and variables → Actions**:
+Configure these under **Settings → Secrets and variables → Actions**:
 
-- `DOCKERHUB_USERNAME` — a Docker Hub account with push access to `defactosoftware/elixir`
-- `DOCKERHUB_TOKEN` — a Docker Hub access token (create one at https://hub.docker.com/settings/security)
+- **Variable** `DOCKERHUB_USERNAME` — a Docker Hub account with push access to `defactosoftware/elixir` (the username isn't sensitive; storing it as a variable keeps it visible in the Actions UI)
+- **Secret** `DOCKERHUB_TOKEN` — a Docker Hub access token (create one at https://hub.docker.com/settings/security)
 
 ### Building locally
 
