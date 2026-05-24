@@ -15,6 +15,13 @@ on:
       - ".github/workflows/publish.yml"
   workflow_dispatch:
 
+# Opt every job into the Node.js 24 runtime ahead of GitHub's 2026-06-02
+# default-flip, so we catch any action incompatibility on our own schedule
+# rather than during a real publish. Safe to remove once Node 24 is the
+# runner default.
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+
 jobs:
   detect-versions:
     runs-on: ubuntu-latest
