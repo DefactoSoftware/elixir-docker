@@ -12,21 +12,27 @@ Included:
 - Some build tools (for dependencies that require compilation steps)
 <br>
 
-*There is currently no GitHub Action to automatically build the images, so building and publishing has to be done manually through Docker Desktop or CLI for now.*
-<br>
-<br>
+### Adding a new version
 
-### To Build (Docker Desktop)
+1. Create a new directory named after the Elixir version (e.g. `1.20.0-rc.6/`) containing a `Dockerfile`.
+2. Open a PR — the `Build and publish` workflow builds the image to verify the Dockerfile compiles.
+3. On merge to `master`, the workflow pushes the image to Docker Hub as `defactosoftware/elixir:<version>`.
 
-*First, install/setup Docker Desktop and login.*
+### Required Docker Hub secrets
+
+The publish workflow needs two repository secrets configured in **Settings → Secrets and variables → Actions**:
+
+- `DOCKERHUB_USERNAME` — a Docker Hub account with push access to `defactosoftware/elixir`
+- `DOCKERHUB_TOKEN` — a Docker Hub access token (create one at https://hub.docker.com/settings/security)
+
+### Building locally
+
+If you need to build the image on your machine (e.g. to test ahead of pushing):
 
 ```
 cd VERSION
 docker build --platform=linux/amd64 -t defactosoftware/elixir:VERSION .
+docker push defactosoftware/elixir:VERSION   # optional
 ```
-<br>
 
-### To Publish (Docker Desktop)
-
-- Find the built image under **images**
-- Click the *three-dot* menu and select **Push to Docker Hub**
+Docker Desktop, Colima, OrbStack and Podman all work — anything that provides a `docker` CLI with buildx.
