@@ -1,4 +1,4 @@
-FROM hexpm/elixir:1.20.0-rc.6-erlang-28.5-ubuntu-noble-20260410
+FROM hexpm/elixir:1.20.0-erlang-29.0.1-debian-bookworm-20260518
 
 ENV NODE_VERSION="20.12.2"
 ENV NODE_DOWNLOAD_URL="https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-x64.tar.xz"
