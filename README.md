@@ -14,7 +14,7 @@ Included:
 
 ### Adding a new version
 
-1. Create a new directory named after the Elixir version (e.g. `1.20.0-rc.6/`) containing a `Dockerfile`.
+1. Create a new directory named after the Elixir version (e.g. `1.20.0-otp-28/`) containing a `Dockerfile`. When publishing multiple Erlang/OTP variants of the same Elixir version, suffix the directory with the OTP major (e.g. `1.20.0-otp-28/`, `1.20.0-otp-29/`).
 2. Open a PR — the `Build and publish` workflow builds the image to verify the Dockerfile compiles.
 3. On merge to `master`, the workflow pushes the image to Docker Hub as `defactosoftware/elixir:<version>`.
 
